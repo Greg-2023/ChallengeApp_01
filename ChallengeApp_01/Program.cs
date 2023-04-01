@@ -28,9 +28,6 @@ user3.AddScore(1);
 user3.AddScore(10);
 // sum is 51
 
-var result1 = user1.Result;
-var result2 = user2.Result;
-var result3 = user3.Result;
 string nameMax = "";
 string surnameMax = "";
 var resultMax = 0;
