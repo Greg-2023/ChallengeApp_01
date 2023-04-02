@@ -2,7 +2,7 @@
 
 namespace ChallengeApp_01.Tests
 {
-    public class Tests
+    public class EmployeeTest1
     {
         [Test]
         public void WhenUserCollectsTwoScores_ShouldCorrectResult()
