@@ -4,29 +4,29 @@ Employee user1 = new Employee("Grzegorz", "Badura", 45);
 Employee user2 = new Employee("Mateusz", "Badura", 15);
 Employee user3 = new Employee("Mariusz", "Ostapowicz", 47);
 
-user1.AddScore(5);
-user1.AddScore(2);
+user1.AddScore(10);
+user1.AddScore(10);
+user1.AddScore(10);
+user1.AddScore(10);
+user1.AddScore(10);
 user1.AddScore(1);
-user1.AddScore(8);
-user1.AddScore(1);
-user1.AddScore(3);
-// sum is 20
-
-user2.AddScore(1);
-user2.AddScore(3);
-user2.AddScore(4);
-user2.AddScore(9);
-user2.AddScore(7);
-user2.AddScore(1);
-// sum is 25
-
-user3.AddScore(10);
-user3.AddScore(10);
-user3.AddScore(10);
-user3.AddScore(10);
-user3.AddScore(1);
-user3.AddScore(10);
 // sum is 51
+
+user2.AddScore(10);
+user2.AddScore(10);
+user2.AddScore(10);
+user2.AddScore(0);
+user2.AddScore(0);
+user2.AddScore(0);
+// sum is 30
+
+user3.AddScore(10);
+user3.AddScore(10);
+user3.AddScore(0);
+user3.AddScore(0);
+user3.AddScore(0);
+user3.AddScore(0);
+// sum is 20
 
 string nameMax = "";
 string surnameMax = "";
