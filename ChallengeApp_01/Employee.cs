@@ -2,46 +2,89 @@
 {
     public class Employee
     {
-        private List<int> score = new List<int>();
 
-        public Employee(string name)
-        {
-            this.Name = name;
-        }
+        private List<float> grades = new List<float>();
 
-        public Employee(string name, string surname, int age)
-        {
-            this.Name = name;
-            this.Surname = surname;
-            this.Age = age;
-        }
-
+        // początek konstruktora
         public Employee(string name, string surname)
         {
             this.Name = name;
             this.Surname = surname;
         }
+        // koniec konstruktora
 
-        
-
-
-        public string Name { get; private set; }
-
+        // to jest propercja
+        public string Name{ get; private set; }
         public string Surname { get; private set; }
+        // koniec propercji
 
-        public int Age { get; private set; }
 
-        public int Result
+        // to jest metoda
+
+        public void AddGrade(double grade)
         {
-            get
+            // tutaj wykorzystuję mechanizm rzutowania jednej zmiennej w drugą
+            // następuje zaokrąglenie do wartości całkowitej, np. 3.33 -> 3
+            float gradeAsFloat = (float)grade;
+            this.AddGrade(gradeAsFloat);
+        }
+
+        public void AddGrade(long grade)
+        {
+            // tutaj wykorzystuję mechanizm rzutowania jednej zmiennej w drugą
+            // następuje zaokrąglenie do wartości całkowitej, np. 3.33 -> 3
+            float gradeAsFloat = (float)grade;
+            this.AddGrade(gradeAsFloat);
+        }
+
+        public void AddGrade(float grade)
+        {
+            // tutaj wykorzystuję mechanizm rzutowania jednej zmiennej w drugą
+            // następuje zaokrąglenie do wartości całkowitej, np. 3.33 -> 3
+            int valueInInt = (int)grade;
+            
+            // tutaj dodajemy walidację
+            if (grade >= 0 && grade <= 100)
             {
-                return this.score.Sum();
+                this.grades.Add(grade);
+            }
+            else
+            {
+                Console.WriteLine("invalid grade value");
+            }
+        }
+        // koniec metody     
+        public void AddGrade(string grade)
+        {
+            // tutaj wykorzystamy metodę statyczną Parse zamiany stringa do floata
+            if (float.TryParse(grade, out float result))
+            {
+                this.AddGrade(result);
+            }
+            else
+            {
+                Console.WriteLine("String is not a float");
             }
         }
 
-        public void AddScore(int number)
+        // to jest nowa metoda, która wypełnia nasz Model Danych danymi
+        public Statistics GetStatistics() 
         {
-            this.score.Add(number);       
+            var statistics = new Statistics();
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+
+            foreach (var grade in this.grades)
+            { 
+                statistics.Max = Math.Max(statistics.Max, grade);
+                statistics.Min = Math.Min(statistics.Min, grade);
+                statistics.Average += grade;
+            }
+
+            statistics.Average = statistics.Average / this.grades.Count;
+            return statistics;
         }
+
     }
 }
